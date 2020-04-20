@@ -25,14 +25,8 @@ def upload():
         photo.save(os.path.join(app.config['UPLOAD_FOLDER'],filename))
         message = "File Upload Successful"
         description = form.description.data
-        form_data = [
-            {
-                "message": message,
-                'filename':filename, 
-                "description": description
-            }
-        ]
-        return jsonify(form_data=form_data)
+        data = [{"message":message,"filename":filename,"description":description}]
+        return jsonify(data=data)
     else:
         errors = form_errors(form)
         return jsonify(errors=errors)
